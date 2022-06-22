@@ -7,7 +7,7 @@ class Player(ABC):
         self.name = name
 
     @abstractmethod
-    def get_move(self, board=""):
+    def get_move(self, board):
         """
         Get the next move to make
 

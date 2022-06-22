@@ -9,5 +9,5 @@ class ExamplePlayer(Player):
     def __init__(self, name):
         super().__init__(name)
 
-    def get_move(self, board):
+    def get_move(self, board=""):
         return [0, 0]
