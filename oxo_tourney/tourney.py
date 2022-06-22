@@ -3,8 +3,8 @@ class Tourney:
         self.__players = player_list
 
     def start(self):
-        results_summary = []                # player1.name, wins, losses, draws
-        results_matrix = []                 # playerX vs playerY
+        results_summary = []  # player1.name, wins, losses, draws
+        results_matrix = []  # playerX vs playerY
         for player1 in self.__players:
             results_summary.append([player1.name, 0, 0, 0])
             results = []
