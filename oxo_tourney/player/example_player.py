@@ -10,4 +10,4 @@ class ExamplePlayer(Player):
         super().__init__(name)
 
     def get_move(self, board):
-        pass
+        return [0, 0]

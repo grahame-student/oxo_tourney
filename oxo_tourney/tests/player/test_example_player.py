@@ -9,3 +9,8 @@ class TestExamplePlayer(TestCase):
         player = ExamplePlayer("some name")
 
         assert_that(player.name, equal_to("some name"))
+
+    def test_get_next_move_returns_row_and_column(self):
+        player = ExamplePlayer("some name")
+        move = player.get_move("")
+        assert_that(move, equal_to([0, 0]))
