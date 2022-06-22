@@ -6,7 +6,7 @@ from oxo_tourney.tourney import Tourney
 
 
 class TestTourney(TestCase):
-    def test_test(self):
+    def test_start_returns_2_results_when_2_players_passed_in(self):
         player_list = [ExamplePlayer(""), ExamplePlayer("")]
         tourney = Tourney(player_list)
 
