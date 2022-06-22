@@ -5,6 +5,7 @@ from oxo_tourney.player.player import Player
 # Add a line for your player class to the __init__.py file
 # Implement your version of the get_move function
 
+
 class ExamplePlayer(Player):
     def __init__(self, name):
         super().__init__(name)
