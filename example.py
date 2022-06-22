@@ -1,5 +1,5 @@
-from oxo_tourney.tourney import Tourney
 from oxo_tourney.player import ExamplePlayer
+from oxo_tourney.tourney import Tourney
 
 
 def main():
