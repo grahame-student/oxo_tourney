@@ -1,10 +1,8 @@
 from unittest import TestCase, mock
 
 from hamcrest import assert_that, equal_to
-
 from oxo_tourney.player import HumanPlayer
 from oxo_tourney.tourney import Tourney
-
 
 complete_game_input = [
     0,
