@@ -5,10 +5,10 @@ from oxo_tourney.tourney import Tourney
 
 def main():
     player_list = [
-         RandomPlayer("Player 1"),
-         RandomPlayer("Player 2"),
-         RandomPlayer("Player 3"),
-         RandomPlayer("Player 4"),
+        RandomPlayer("Player 1"),
+        RandomPlayer("Player 2"),
+        RandomPlayer("Player 3"),
+        RandomPlayer("Player 4"),
     ]
 
     tourney = Tourney(player_list)
