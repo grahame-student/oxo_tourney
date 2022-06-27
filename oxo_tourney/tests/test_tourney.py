@@ -70,9 +70,9 @@ class TestTourney(TestCase):
         with mock.patch("builtins.input", side_effect=player_1_win + player_2_win):
             self.tourney.start()
 
-        player_1_score = self.tourney.score_matrix[self.player_list[0].id][self.player_list[1].id][
-            constants.SCORE_WINS
-        ]
+        player_1_score = self.tourney.score_matrix[self.player_list[0].id][
+            self.player_list[1].id
+        ][constants.SCORE_WINS]
 
         assert_that(player_1_score, equal_to(2))
 
@@ -80,9 +80,9 @@ class TestTourney(TestCase):
         with mock.patch("builtins.input", side_effect=player_2_win + player_1_win):
             self.tourney.start()
 
-        player_2_score = self.tourney.score_matrix[self.player_list[1].id][self.player_list[0].id][
-            constants.SCORE_WINS
-        ]
+        player_2_score = self.tourney.score_matrix[self.player_list[1].id][
+            self.player_list[0].id
+        ][constants.SCORE_WINS]
 
         assert_that(player_2_score, equal_to(2))
 
@@ -90,9 +90,9 @@ class TestTourney(TestCase):
         with mock.patch("builtins.input", side_effect=player_2_win + player_1_win):
             self.tourney.start()
 
-        player_1_score = self.tourney.score_matrix[self.player_list[0].id][self.player_list[1].id][
-            constants.SCORE_LOSSES
-        ]
+        player_1_score = self.tourney.score_matrix[self.player_list[0].id][
+            self.player_list[1].id
+        ][constants.SCORE_LOSSES]
 
         assert_that(player_1_score, equal_to(2))
 
@@ -100,9 +100,9 @@ class TestTourney(TestCase):
         with mock.patch("builtins.input", side_effect=player_1_win + player_2_win):
             self.tourney.start()
 
-        player_2_score = self.tourney.score_matrix[self.player_list[1].id][self.player_list[0].id][
-            constants.SCORE_LOSSES
-        ]
+        player_2_score = self.tourney.score_matrix[self.player_list[1].id][
+            self.player_list[0].id
+        ][constants.SCORE_LOSSES]
 
         assert_that(player_2_score, equal_to(2))
 
@@ -110,9 +110,9 @@ class TestTourney(TestCase):
         with mock.patch("builtins.input", side_effect=draw + draw):
             self.tourney.start()
 
-        player_1_score = self.tourney.score_matrix[self.player_list[0].id][self.player_list[1].id][
-            constants.SCORE_DRAWS
-        ]
+        player_1_score = self.tourney.score_matrix[self.player_list[0].id][
+            self.player_list[1].id
+        ][constants.SCORE_DRAWS]
 
         assert_that(player_1_score, equal_to(2))
 
@@ -120,8 +120,8 @@ class TestTourney(TestCase):
         with mock.patch("builtins.input", side_effect=draw + draw):
             self.tourney.start()
 
-        player_2_score = self.tourney.score_matrix[self.player_list[1].id][self.player_list[0].id][
-            constants.SCORE_DRAWS
-        ]
+        player_2_score = self.tourney.score_matrix[self.player_list[1].id][
+            self.player_list[0].id
+        ][constants.SCORE_DRAWS]
 
         assert_that(player_2_score, equal_to(2))
