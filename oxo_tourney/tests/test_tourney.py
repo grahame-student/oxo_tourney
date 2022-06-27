@@ -56,21 +56,21 @@ draw = [
 
 
 class TestTourney(TestCase):
+    def setUp(self):
+        self.player_list = [HumanPlayer(""), HumanPlayer("")]
+        self.tourney = Tourney(self.player_list)
+
     def test_start_returns_2_results_when_2_players_passed_in(self):
         with mock.patch("builtins.input", side_effect=player_1_win + player_1_win):
-            player_list = [HumanPlayer(""), HumanPlayer("")]
-            tourney = Tourney(player_list)
-            tourney.start()
+            self.tourney.start()
 
-        assert_that(len(tourney.score_matrix), equal_to(2))
+        assert_that(len(self.tourney.score_matrix), equal_to(2))
 
     def test_score_matrix_has_2_wins_for_player_1_vs_player_2(self):
         with mock.patch("builtins.input", side_effect=player_1_win + player_2_win):
-            player_list = [HumanPlayer(""), HumanPlayer("")]
-            tourney = Tourney(player_list)
-            tourney.start()
+            self.tourney.start()
 
-        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][
+        player_1_score = self.tourney.score_matrix[self.player_list[0].id][self.player_list[1].id][
             constants.SCORE_WINS
         ]
 
@@ -78,12 +78,9 @@ class TestTourney(TestCase):
 
     def test_score_matrix_has_2_wins_for_player_2_vs_player_1(self):
         with mock.patch("builtins.input", side_effect=player_2_win + player_1_win):
-            player_list = [HumanPlayer(""), HumanPlayer("")]
-            tourney = Tourney(player_list)
-            tourney.start()
-            print(tourney.score_matrix)
+            self.tourney.start()
 
-        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][
+        player_2_score = self.tourney.score_matrix[self.player_list[1].id][self.player_list[0].id][
             constants.SCORE_WINS
         ]
 
@@ -91,11 +88,9 @@ class TestTourney(TestCase):
 
     def test_score_matrix_has_2_losses_for_player_1_vs_player_2(self):
         with mock.patch("builtins.input", side_effect=player_2_win + player_1_win):
-            player_list = [HumanPlayer(""), HumanPlayer("")]
-            tourney = Tourney(player_list)
-            tourney.start()
+            self.tourney.start()
 
-        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][
+        player_1_score = self.tourney.score_matrix[self.player_list[0].id][self.player_list[1].id][
             constants.SCORE_LOSSES
         ]
 
@@ -103,12 +98,9 @@ class TestTourney(TestCase):
 
     def test_score_matrix_has_2_losses_for_player_2_vs_player_1(self):
         with mock.patch("builtins.input", side_effect=player_1_win + player_2_win):
-            player_list = [HumanPlayer(""), HumanPlayer("")]
-            tourney = Tourney(player_list)
-            tourney.start()
-            print(tourney.score_matrix)
+            self.tourney.start()
 
-        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][
+        player_2_score = self.tourney.score_matrix[self.player_list[1].id][self.player_list[0].id][
             constants.SCORE_LOSSES
         ]
 
@@ -116,11 +108,9 @@ class TestTourney(TestCase):
 
     def test_score_matrix_has_2_draws_for_player_1_vs_player_2(self):
         with mock.patch("builtins.input", side_effect=draw + draw):
-            player_list = [HumanPlayer(""), HumanPlayer("")]
-            tourney = Tourney(player_list)
-            tourney.start()
+            self.tourney.start()
 
-        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][
+        player_1_score = self.tourney.score_matrix[self.player_list[0].id][self.player_list[1].id][
             constants.SCORE_DRAWS
         ]
 
@@ -128,12 +118,9 @@ class TestTourney(TestCase):
 
     def test_score_matrix_has_2_draws_for_player_2_vs_player_1(self):
         with mock.patch("builtins.input", side_effect=draw + draw):
-            player_list = [HumanPlayer(""), HumanPlayer("")]
-            tourney = Tourney(player_list)
-            tourney.start()
-            print(tourney.score_matrix)
+            self.tourney.start()
 
-        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][
+        player_2_score = self.tourney.score_matrix[self.player_list[1].id][self.player_list[0].id][
             constants.SCORE_DRAWS
         ]
 
