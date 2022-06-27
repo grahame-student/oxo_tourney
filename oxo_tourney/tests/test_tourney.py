@@ -1,6 +1,5 @@
 from unittest import TestCase
 
-from hamcrest import assert_that, equal_to
 from oxo_tourney.player import RandomPlayer
 from oxo_tourney.tourney import Tourney
 

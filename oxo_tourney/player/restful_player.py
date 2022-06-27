@@ -1,8 +1,7 @@
 import json
 
-from oxo_tourney.player.player import Player
-
 import requests
+from oxo_tourney.player.player import Player
 
 
 class RestfulPlayer(Player):

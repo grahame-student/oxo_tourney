@@ -1,5 +1,5 @@
 from oxo_tourney import constants
-from oxo_tourney.player import RandomPlayer, RestfulPlayer, HumanPlayer
+from oxo_tourney.player import HumanPlayer
 from oxo_tourney.tourney import Tourney
 
 
