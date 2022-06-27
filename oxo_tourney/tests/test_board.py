@@ -72,15 +72,15 @@ class TestBoard(TestCase):
 
     def test_winner_returns_None_when_board_full_and_no_lines_completed(self):
         board = Board(3)
-        board.set_cell(0, 0, "a")
-        board.set_cell(0, 1, "b")
-        board.set_cell(0, 2, "c")
-        board.set_cell(1, 0, "d")
-        board.set_cell(1, 1, "e")
-        board.set_cell(1, 2, "f")
-        board.set_cell(2, 0, "g")
-        board.set_cell(2, 1, "h")
-        board.set_cell(2, 2, "i")
+        board.set_cell(0, 0, "z")
+        board.set_cell(0, 1, "y")
+        board.set_cell(0, 2, "x")
+        board.set_cell(1, 0, "w")
+        board.set_cell(1, 1, "v")
+        board.set_cell(1, 2, "u")
+        board.set_cell(2, 0, "t")
+        board.set_cell(2, 1, "s")
+        board.set_cell(2, 2, "r")
         assert_that(board.winner, equal_to(None))
 
     def test_winner_returns_winning_player_when_line_completed(self):
