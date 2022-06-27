@@ -35,22 +35,30 @@ player_2_win = [
 ]
 
 draw = [
-    0, 0,
-    1, 0,
-    2, 0,
-    0, 2,
-    1, 2,
-    2, 2,
-    0, 1,
-    1, 1,
-    2, 1,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    0,
+    2,
+    1,
+    2,
+    2,
+    2,
+    0,
+    1,
+    1,
+    1,
+    2,
+    1,
 ]
+
 
 class TestTourney(TestCase):
     def test_start_returns_2_results_when_2_players_passed_in(self):
-        with mock.patch(
-            "builtins.input", side_effect=player_1_win + player_1_win
-        ):
+        with mock.patch("builtins.input", side_effect=player_1_win + player_1_win):
             player_list = [HumanPlayer(""), HumanPlayer("")]
             tourney = Tourney(player_list)
             tourney.start()
@@ -58,76 +66,76 @@ class TestTourney(TestCase):
         assert_that(len(tourney.score_matrix), equal_to(2))
 
     def test_score_matrix_has_2_wins_for_player_1_vs_player_2(self):
-        with mock.patch(
-            "builtins.input", side_effect=player_1_win + player_2_win
-        ):
+        with mock.patch("builtins.input", side_effect=player_1_win + player_2_win):
             player_list = [HumanPlayer(""), HumanPlayer("")]
             tourney = Tourney(player_list)
             tourney.start()
 
-        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][constants.SCORE_WINS]
+        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][
+            constants.SCORE_WINS
+        ]
 
         assert_that(player_1_score, equal_to(2))
 
     def test_score_matrix_has_2_wins_for_player_2_vs_player_1(self):
-        with mock.patch(
-            "builtins.input", side_effect=player_2_win + player_1_win
-        ):
+        with mock.patch("builtins.input", side_effect=player_2_win + player_1_win):
             player_list = [HumanPlayer(""), HumanPlayer("")]
             tourney = Tourney(player_list)
             tourney.start()
             print(tourney.score_matrix)
 
-        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][constants.SCORE_WINS]
+        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][
+            constants.SCORE_WINS
+        ]
 
         assert_that(player_2_score, equal_to(2))
 
     def test_score_matrix_has_2_losses_for_player_1_vs_player_2(self):
-        with mock.patch(
-            "builtins.input", side_effect=player_2_win + player_1_win
-        ):
+        with mock.patch("builtins.input", side_effect=player_2_win + player_1_win):
             player_list = [HumanPlayer(""), HumanPlayer("")]
             tourney = Tourney(player_list)
             tourney.start()
 
-        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][constants.SCORE_LOSSES]
+        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][
+            constants.SCORE_LOSSES
+        ]
 
         assert_that(player_1_score, equal_to(2))
 
     def test_score_matrix_has_2_losses_for_player_2_vs_player_1(self):
-        with mock.patch(
-            "builtins.input", side_effect=player_1_win + player_2_win
-        ):
+        with mock.patch("builtins.input", side_effect=player_1_win + player_2_win):
             player_list = [HumanPlayer(""), HumanPlayer("")]
             tourney = Tourney(player_list)
             tourney.start()
             print(tourney.score_matrix)
 
-        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][constants.SCORE_LOSSES]
+        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][
+            constants.SCORE_LOSSES
+        ]
 
         assert_that(player_2_score, equal_to(2))
 
     def test_score_matrix_has_2_draws_for_player_1_vs_player_2(self):
-        with mock.patch(
-            "builtins.input", side_effect=draw + draw
-        ):
+        with mock.patch("builtins.input", side_effect=draw + draw):
             player_list = [HumanPlayer(""), HumanPlayer("")]
             tourney = Tourney(player_list)
             tourney.start()
 
-        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][constants.SCORE_DRAWS]
+        player_1_score = tourney.score_matrix[player_list[0].id][player_list[1].id][
+            constants.SCORE_DRAWS
+        ]
 
         assert_that(player_1_score, equal_to(2))
 
     def test_score_matrix_has_2_draws_for_player_2_vs_player_1(self):
-        with mock.patch(
-            "builtins.input", side_effect=draw + draw
-        ):
+        with mock.patch("builtins.input", side_effect=draw + draw):
             player_list = [HumanPlayer(""), HumanPlayer("")]
             tourney = Tourney(player_list)
             tourney.start()
             print(tourney.score_matrix)
 
-        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][constants.SCORE_DRAWS]
+        player_2_score = tourney.score_matrix[player_list[1].id][player_list[0].id][
+            constants.SCORE_DRAWS
+        ]
 
         assert_that(player_2_score, equal_to(2))
