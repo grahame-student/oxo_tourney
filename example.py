@@ -1,29 +1,15 @@
 from oxo_tourney import constants
-from oxo_tourney.player import HumanPlayer
+from oxo_tourney.player import RandomPlayer
 from oxo_tourney.tourney import Tourney
 
 
 def main():
     player_list = [
-        HumanPlayer("Player 1"),
-        HumanPlayer("Player 2"),
+         RandomPlayer("Player 1"),
+         RandomPlayer("Player 2"),
+         RandomPlayer("Player 3"),
+         RandomPlayer("Player 4"),
     ]
-
-    # player_list = [
-    #     RestfulPlayer("Test 1"),
-    #     RestfulPlayer("Test 2"),
-    #     RestfulPlayer("Test 3"),
-    #     RestfulPlayer("Test 4"),
-    #     RestfulPlayer("Test 5"),
-    # ]
-
-    # player_list = [
-    #     RandomPlayer("Player 1"),
-    #     RandomPlayer("Player 2"),
-    #     RandomPlayer("Player 3"),
-    #     RandomPlayer("Player 4"),
-    #     RestfulPlayer("Player 5"),
-    # ]
 
     tourney = Tourney(player_list)
     tourney.start()
