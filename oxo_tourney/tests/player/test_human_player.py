@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, mock
 
 from hamcrest import assert_that, equal_to
 from oxo_tourney.player import HumanPlayer
@@ -11,6 +11,7 @@ class TestExamplePlayer(TestCase):
         assert_that(player.name, equal_to("some name"))
 
     def test_get_next_move_returns_row_and_column(self):
-        player = HumanPlayer("some name")
-        move = player.get_move("")
-        assert_that(move, equal_to([0, 0]))
+        with mock.patch("builtins.input", side_effect=[1, 2]):
+            player = HumanPlayer("some name")
+            move = player.get_move("")
+            assert_that(move, equal_to([1, 2]))
