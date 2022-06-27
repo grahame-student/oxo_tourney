@@ -41,7 +41,9 @@ class Game:
 
     def __get_move(self):
         while True:
-            move = self.__players[self.__next_player].get_move(self.__board, self.__symbols[self.__next_player])
+            move = self.__players[self.__next_player].get_move(
+                self.__board, self.__symbols[self.__next_player]
+            )
             if self.__board.valid_move(move[0], move[1]):
                 break
             print("Invalid move, try again")

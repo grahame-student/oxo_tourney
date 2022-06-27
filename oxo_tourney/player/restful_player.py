@@ -24,14 +24,14 @@ class RestfulPlayer(Player):
 
         headers = {
             "X-RapidAPI-Key": "06c1146f5fmshaa95fff403de62dp1da2efjsn0263107c10cf",
-            "X-RapidAPI-Host": "stujo-tic-tac-toe-stujo-v1.p.rapidapi.com"
+            "X-RapidAPI-Host": "stujo-tic-tac-toe-stujo-v1.p.rapidapi.com",
         }
 
         response = requests.request("GET", url, headers=headers)
         response = json.loads(response.text)
 
-        row = int(response['recommendation'] / board.size)
-        col = int(response['recommendation'] % board.size)
+        row = int(response["recommendation"] / board.size)
+        col = int(response["recommendation"] % board.size)
 
         print(f"{response['recommendation']} -> {col}, {row}")
 

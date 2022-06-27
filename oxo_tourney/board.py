@@ -19,7 +19,7 @@ class Board:
 
     def set_cell(self, col, row, symbol):
         row_val = self.__grid[row]
-        row_val = row_val[:col] + symbol + row_val[col + 1:]
+        row_val = row_val[:col] + symbol + row_val[col + 1 :]
         self.__grid[row] = row_val
         line_count = self.__check_lines(symbol)
         if line_count > 0:
@@ -46,7 +46,7 @@ class Board:
         for col in range(0, self.size):
             line = True
             for row in range(0, self.size):
-                line &= ((self.__grid[row][col]) == symbol)
+                line &= (self.__grid[row][col]) == symbol
             if line:
                 result += 1
         return result
@@ -57,8 +57,8 @@ class Board:
         line_dr = True  # \
         line_dl = True  # /
         for row in range(0, self.size):
-            line_dr &= (self.__grid[row][row] == symbol)
-            line_dl &= (self.__grid[row][max_col - row] == symbol)
+            line_dr &= self.__grid[row][row] == symbol
+            line_dl &= self.__grid[row][max_col - row] == symbol
         if line_dl | line_dr:
             result += 1
         return result
