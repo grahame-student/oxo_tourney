@@ -18,10 +18,21 @@ jobs:
       # Setup python environment
       - name: setup python
         uses: actions/setup-python@v2
-        
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          deactivate
+
       # Run tournament code
       - name: Run Tournament
-        run: python example.py
+        run: |
+          source venv/bin/activate
+          example.py
+          deactivate
 
       # Save the tournament results as an artefact
       # - name: Upload Artifact
