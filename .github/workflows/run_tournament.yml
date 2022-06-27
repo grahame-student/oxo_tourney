@@ -1,0 +1,30 @@
+name: Lint Project
+
+on:
+  workflow_dispatch:
+
+jobs:
+  oxo-tournament:
+    name: Play oxo Tournament
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Setup python environment
+      - name: setup python
+        uses: actions/setup-python@v2
+        
+      # Run tournament code
+      - name: Run Tournament
+        run: python example.py
+
+      # Save the tournament results as an artefact
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v3
+      #     with:
+      #       name: oxo_results
+      #       path: oxo_results.txt
