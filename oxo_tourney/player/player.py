@@ -1,5 +1,8 @@
 import uuid
 from abc import ABC, abstractmethod
+from typing import List
+
+from oxo_tourney.board import Board
 
 
 class Player(ABC):
@@ -12,11 +15,11 @@ class Player(ABC):
         self.score_summary = [0, 0, 0]
 
     @abstractmethod
-    def get_move(self, board, symbol):
+    def get_move(self, board: Board, symbol: str) -> List[int, int]:
         """
         Get the next move to make
 
+        :param board: The board
         :param symbol: Symbol used by the current player
-        :param board: string representing the current board state
         :return: list with column, row of next move
         """

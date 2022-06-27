@@ -36,9 +36,6 @@ class Game:
     def __display_board(self):
         print(self.__board)
 
-    def __make_move(self, move):
-        self.__board.set_cell(move[0], move[1], self.__symbols[self.__next_player])
-
     def __get_move(self):
         while True:
             move = self.__players[self.__next_player].get_move(
@@ -48,6 +45,9 @@ class Game:
                 break
             print("Invalid move, try again")
         return move
+
+    def __make_move(self, move):
+        self.__board.set_cell(move[0], move[1], self.__symbols[self.__next_player])
 
     def __show_outro(self):
         print()
