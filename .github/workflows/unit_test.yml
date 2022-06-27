@@ -28,6 +28,7 @@ jobs:
           pytest --cov=./ --cov-report=xml --cov-fail-under 100
 
       - name: Upload Coverage to Codecov
+        if: always()
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
