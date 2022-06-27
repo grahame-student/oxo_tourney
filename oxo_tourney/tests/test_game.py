@@ -21,7 +21,7 @@ complete_game_input = [
 ]
 
 
-class TestBoard(TestCase):
+class TestGame(TestCase):
     def test_game_prompts_for_new_input_when_previously_selected_cell_entered(self):
         # Not a great test, the assertion doesn't check what the test states it is for
         with mock.patch(

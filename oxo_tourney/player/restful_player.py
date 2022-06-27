@@ -11,7 +11,6 @@ class RestfulPlayer(Player):
     def get_move(self, board, symbol):
         if board.size != 3:
             print("Rest API only supports 3x3 boards")
-            exit()
 
         base_url = "https://stujo-tic-tac-toe-stujo-v1.p.rapidapi.com"
 
@@ -34,5 +33,4 @@ class RestfulPlayer(Player):
 
         print(f"{response['recommendation']} -> {col}, {row}")
 
-        # Only ever chooses the same move, can't be used to play a complete game
         return [col, row]
