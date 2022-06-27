@@ -15,7 +15,7 @@ class Player(ABC):
         self.score_summary = [0, 0, 0]
 
     @abstractmethod
-    def get_move(self, board: Board, symbol: str) -> List[int, int]:
+    def get_move(self, board: Board, symbol: str) -> List[int]:
         """
         Get the next move to make
 
