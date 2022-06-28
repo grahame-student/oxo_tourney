@@ -10,7 +10,6 @@ def main():
         RandomPlayer("Player 3"),
         RandomPlayer("Player 4"),
     ]
-
     tourney = Tourney(player_list)
     tourney.start()
 
