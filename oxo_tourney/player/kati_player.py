@@ -13,7 +13,21 @@ class KatiPlayer(Player):
     def get_move(self, board, symbol):
         # fluff code for basic testing
         size = board.size
-        row = random.randrange(size)
-        col = random.randrange(size)
-        print("kati is playing")
+        row = 0
+        col = 0
+        board_state = f"{board}".splitlines()
+        board_state = "".join(board_state)
+
+        available_spaces = []
+        for var in range(size * size):
+            if board_state[var] == '.':
+                available_spaces.append(var)
+
+        element = random.choice(available_spaces)
+        
+        for var in range(size):
+            if element < (size * (var + 1)) and (element >= (size * var)):
+                row = element - (size * var)
+                col = var
+
         return [row, col]
