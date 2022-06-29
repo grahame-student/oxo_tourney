@@ -1,8 +1,7 @@
 from oxo_tourney import constants
+from oxo_tourney.player import KatiPlayer
 from oxo_tourney.player import RandomPlayer
 from oxo_tourney.tourney import Tourney
-
-from oxo_tourney.player import KatiPlayer
 
 
 def main():
@@ -10,7 +9,7 @@ def main():
         RandomPlayer("Player 1"),
         RandomPlayer("Player 2"),
         RandomPlayer("Player 3"),
-        #RandomPlayer("Player 4"),
+        # RandomPlayer("Player 4"),
         KatiPlayer("Player 4"),
     ]
     tourney = Tourney(player_list)
@@ -32,10 +31,10 @@ def show_summary(player_list):
 
 def get_summary_line(player):
     return (
-        f"{player.name:12}"
-        + f"{str(player.score_summary[constants.SCORE_WINS]):8}"
-        + f"{str(player.score_summary[constants.SCORE_LOSSES]):8}"
-        + f"{str(player.score_summary[constants.SCORE_DRAWS]):8}"
+            f"{player.name:12}"
+            + f"{str(player.score_summary[constants.SCORE_WINS]):8}"
+            + f"{str(player.score_summary[constants.SCORE_LOSSES]):8}"
+            + f"{str(player.score_summary[constants.SCORE_DRAWS]):8}"
     )
 
 

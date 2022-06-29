@@ -1,5 +1,5 @@
-from oxo_tourney.player.player import Player
 import random
+from oxo_tourney.player.player import Player
 
 
 # Create new player class from this template
@@ -24,7 +24,7 @@ class KatiPlayer(Player):
                 available_spaces.append(var)
 
         element = random.choice(available_spaces)
-        
+
         for var in range(size):
             if element < (size * (var + 1)) and (element >= (size * var)):
                 row = element - (size * var)
