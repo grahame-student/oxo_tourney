@@ -19,10 +19,10 @@ def get_position(board, symbol, size):
 def convert_position_to_row_and_col(element, size):
     for var in range(size):
         if element < (size * (var + 1)) and (element >= (size * var)):
-            row = element - (size * var)
-            col = var
+            col = element - (size * var)
+            row = var
 
-    return [row, col]
+    return [col, row]
 
 
 class KatiPlayer(Player):
@@ -37,5 +37,5 @@ class KatiPlayer(Player):
         element = get_position(board_state, symbol, size)
 
         move = convert_position_to_row_and_col(element, size)
-        print("kt")
+        print("kt", move[0], move[1])
         return [move[0], move[1]]
