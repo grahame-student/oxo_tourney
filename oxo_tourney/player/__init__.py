@@ -4,7 +4,6 @@ from .kati_player import KatiPlayer
 from .random_player import RandomPlayer
 from .restful_player import RestfulPlayer
 
-
 __all__ = [
     "ExamplePlayer",
     "HumanPlayer",
