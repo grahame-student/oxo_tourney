@@ -25,7 +25,13 @@ jobs:
       
       - name: Run tests with pytest
         run: |
-          pytest --cov=./ --cov-report=xml --cov-fail-under 100
+          pytest --cov=./ --cov-report=xml:pytest-cobertura.xml --cov-fail-under 100
+
+      - name: ReportGenerator
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.9
+        with:
+          reports: pytest-cobertura.xml
+          targetdir: .
 
       - name: Upload Coverage to Codecov
         if: always()
