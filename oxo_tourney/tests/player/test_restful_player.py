@@ -1,5 +1,5 @@
 from unittest import TestCase
-from unittest.mock import call, MagicMock, patch
+from unittest.mock import MagicMock, call, patch
 
 from hamcrest import assert_that, equal_to, has_item
 from oxo_tourney.player import RestfulPlayer
