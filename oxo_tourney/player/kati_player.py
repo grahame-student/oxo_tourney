@@ -99,15 +99,13 @@ class KatiPlayer(Player):
         available_spaces = []
         board_state = []
         for var in range(size * size):
-            if board[var] == ".":
-                available_spaces.append(var)
-                board_state.append(".")
-            elif board[var] == PLAYER_2:
+            if board[var] == PLAYER_2:
                 board_state.append(PLAYER_2)
             elif board[var] == PLAYER_1:
                 board_state.append(PLAYER_1)
             else:
-                print("kt shape")
+                available_spaces.append(var)
+                board_state.append(".")
 
         # check if any move will win
         ret = self.check_win_move(available_spaces, board_state, size, symbol)
