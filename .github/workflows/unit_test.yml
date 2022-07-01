@@ -34,6 +34,7 @@ jobs:
           targetdir: .
 
       - name: Upload coverage report artifact
+        if: always()
         uses: actions/upload-artifact@v2.2.3
         with:
           name: index.html 
