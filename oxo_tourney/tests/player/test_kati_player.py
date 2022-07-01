@@ -74,3 +74,21 @@ class TestKatiPlayer(TestCase):
         board_mock = ["X", ".", "O", ".", "X", ".", "O", "O", "."]
         result = player.check_diagonals(board_mock, "O", 3)
         assert_that(result, equal_to(0))
+
+    def test_other_symbol_returns_O(self):
+        player = KatiPlayer("")
+        symbol = "X"
+        result = player.get_other_symbol(symbol)
+        assert_that(result, equal_to("O"))
+
+    def test_other_symbol_returns_X(self):
+        player = KatiPlayer("")
+        symbol = "O"
+        result = player.get_other_symbol(symbol)
+        assert_that(result, equal_to("X"))
+
+    def test_other_symbol_returns_blank(self):
+        player = KatiPlayer("")
+        symbol = "A"
+        result = player.get_other_symbol(symbol)
+        assert_that(result, equal_to("."))
