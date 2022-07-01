@@ -1,7 +1,7 @@
 from unittest import TestCase
-from unittest.mock import MagicMock, patch
+from unittest.mock import call, MagicMock, patch
 
-from hamcrest import assert_that, equal_to
+from hamcrest import assert_that, equal_to, has_item
 from oxo_tourney.player import RestfulPlayer
 
 
@@ -29,5 +29,5 @@ class TestRestfulPlayer(TestCase):
         board_mock.__str__.return_value = "...\n...\n..."
 
         with patch('builtins.print') as mocked_print:    
-            move = player.get_move(board_mock, "X")
-            assert mocked_print.mock_calls == [call('Rest API only supports 3x3 boards')]
+            _ = player.get_move(board_mock, "X")
+            assert_that(mocked_print.mock_calls, has_item(call('Rest API only supports 3x3 boards')))
