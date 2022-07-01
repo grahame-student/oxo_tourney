@@ -28,6 +28,9 @@ class TestRestfulPlayer(TestCase):
         board_mock.size = 2
         board_mock.__str__.return_value = "...\n...\n..."
 
-        with patch('builtins.print') as mocked_print:    
+        with patch("builtins.print") as mocked_print:
             _ = player.get_move(board_mock, "X")
-            assert_that(mocked_print.mock_calls, has_item(call('Rest API only supports 3x3 boards')))
+            assert_that(
+                mocked_print.mock_calls,
+                has_item(call("Rest API only supports 3x3 boards")),
+            )
