@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from hamcrest import assert_that, equal_to, less_than, is_not
+from hamcrest import assert_that, equal_to, is_not, less_than
 from oxo_tourney.player import KatiPlayer
 
 
@@ -129,6 +129,3 @@ class TestKatiPlayer(TestCase):
         board[12] = "O"
         result = player.get_position(board, "O", 5)
         assert_that(result, is_not(0 or 4 or 12 or 20 or 24))
-
-
-

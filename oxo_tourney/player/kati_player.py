@@ -2,7 +2,6 @@ import random
 
 from oxo_tourney.player.player import Player
 
-
 PLAYER_1 = "O"
 PLAYER_2 = "X"
 

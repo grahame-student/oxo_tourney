@@ -30,10 +30,10 @@ def show_summary(player_list):
 
 def get_summary_line(player):
     return (
-            f"{player.name:12}"
-            + f"{str(player.score_summary[constants.SCORE_WINS]):8}"
-            + f"{str(player.score_summary[constants.SCORE_LOSSES]):8}"
-            + f"{str(player.score_summary[constants.SCORE_DRAWS]):8}"
+        f"{player.name:12}"
+        + f"{str(player.score_summary[constants.SCORE_WINS]):8}"
+        + f"{str(player.score_summary[constants.SCORE_LOSSES]):8}"
+        + f"{str(player.score_summary[constants.SCORE_DRAWS]):8}"
     )
 
 
