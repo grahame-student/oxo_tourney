@@ -1,5 +1,7 @@
-from oxo_tourney.player.player import Player
 import random
+
+from oxo_tourney.player.player import Player
+
 
 PLAYER_1 = "O"
 PLAYER_2 = "X"
@@ -125,7 +127,7 @@ class KatiPlayer(Player):
             return random.choice(open_corners)
 
         # check if the middle is free
-        middle = int(size / 2)
+        middle = int((size * size) / 2)
         if middle in available_spaces:
             return middle
 

@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from hamcrest import *  # assert_that, equal_to
+from hamcrest import assert_that, equal_to, less_than, is_not
 from oxo_tourney.player import KatiPlayer
 
 
@@ -92,3 +92,43 @@ class TestKatiPlayer(TestCase):
         symbol = "A"
         result = player.get_other_symbol(symbol)
         assert_that(result, equal_to("."))
+
+    def test_get_position_returns_win_space(self):
+        player = KatiPlayer("")
+        board = ["."] * 9
+        board[0] = "X"
+        board[1] = "X"
+        result = player.get_position(board, "X", 3)
+        assert_that(result, equal_to(2))
+
+    def test_get_position_returns_block_space(self):
+        player = KatiPlayer("")
+        board = ["."] * 9
+        board[0] = "O"
+        board[1] = "O"
+        result = player.get_position(board, "X", 3)
+        assert_that(result, equal_to(2))
+
+    def test_get_position_returns_middle_space(self):
+        player = KatiPlayer("")
+        board = ["."] * 25
+        board[0] = "X"
+        board[4] = "X"
+        board[20] = "O"
+        board[24] = "X"
+        result = player.get_position(board, "O", 5)
+        assert_that(result, equal_to(12))
+
+    def test_get_position_returns_random_space(self):
+        player = KatiPlayer("")
+        board = ["."] * 25
+        board[0] = "X"
+        board[4] = "X"
+        board[20] = "O"
+        board[24] = "X"
+        board[12] = "O"
+        result = player.get_position(board, "O", 5)
+        assert_that(result, is_not(0 or 4 or 12 or 20 or 24))
+
+
+

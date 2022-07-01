@@ -1,6 +1,5 @@
 from oxo_tourney import constants
-from oxo_tourney.player import KatiPlayer
-from oxo_tourney.player import RandomPlayer
+from oxo_tourney.player import KatiPlayer, RandomPlayer
 from oxo_tourney.tourney import Tourney
 
 
