@@ -4,10 +4,10 @@ from oxo_tourney.player.player import Player
 class AiPlayer(Player):
     def __init__(self, name: str):
         super().__init__(name)
-        self.__ai_symbol = None
-        self.__opponent_symbol = None
-        self.__board_state = None
-        self.__board_size = None
+        self.__ai_symbol = ''
+        self.__opponent_symbol = ''
+        self.__board_state = []
+        self.__board_size = 0
 
     def get_move(self, board, ai_symbol: str):
         board_state = f"{board}".splitlines()
@@ -17,7 +17,7 @@ class AiPlayer(Player):
         self.__opponent_symbol = "O" if ai_symbol == "X" else "X"
 
         best_score = -100
-        best_move = None
+        best_move = []
 
         for row in range(0, self.__board_size):
             for col in range(0, self.__board_size):
