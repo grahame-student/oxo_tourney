@@ -25,6 +25,7 @@ jobs:
       
       - name: Run tests with pytest
         run: |
+          mkdir reports
           pytest --cov=./ --cov-branch --cov-report=xml:pytest-cobertura.xml --cov-fail-under 100
 
       - name: ReportGenerator
@@ -32,14 +33,15 @@ jobs:
         uses: danielpalme/ReportGenerator-GitHub-Action@5.1.9
         with:
           reports: pytest-cobertura.xml
-          targetdir: .
+          targetdir: reports
+          reporttypes: 'HtmlInline;PngChart;HtmlChart'
 
       - name: Upload coverage report artifact
         if: always()
         uses: actions/upload-artifact@v2.2.3
         with:
-          name: index.html 
-          path: .
+          name: 'coverage reports'
+          path: reports/*
             
       - name: Upload Coverage to Codecov
         if: always()
