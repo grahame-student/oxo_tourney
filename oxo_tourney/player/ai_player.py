@@ -30,6 +30,7 @@ class AiPlayer(Player):
                         best_move = [col, row]
         return best_move
 
+    # returns optimal move using minimax algorithm
     def __minimax(self, board_state,  is_maximizing):
         if self.__is_ai_player_wins():
             return 1
