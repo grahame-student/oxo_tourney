@@ -34,7 +34,7 @@ jobs:
         with:
           reports: pytest-cobertura.xml
           targetdir: reports
-          reporttypes: 'HtmlInline;PngChart;HtmlChart'
+          reporttypes: 'HtmlChart'
 
       - name: Upload coverage report artifact
         if: always()
