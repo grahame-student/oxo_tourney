@@ -13,37 +13,30 @@ class TestExamplePlayer(TestCase):
 
     def test_get_next_move_returns_row_and_column(self):
         player = BlockingPlayer("some name")
-
         board_mock = MagicMock()
         board_mock.size = 3
         board_mock.__str__.return_value = "...\n...\n..."
-
         move = player.get_move(board_mock, "X")
         assert_that(len(move), equal_to(2))
 
     def test_get_move_selects_centre_square_when_board_empty(self):
         player = BlockingPlayer("some name")
-
         board_mock = MagicMock()
         board_mock.size = 3
         board_mock.__str__.return_value = "...\n...\n..."
-
         move = player.get_move(board_mock, "X")
         assert_that(move, equal_to([1, 1]))
 
     def test_get_move_selects_corner_cell_when_center_of_board_taken(self):
         player = BlockingPlayer("some name")
-
         board_mock = MagicMock()
         board_mock.size = 3
         board_mock.__str__.return_value = "...\n.O.\n..."
-
         move = player.get_move(board_mock, "X")
         assert_that(move, equal_to([0, 0]))
 
     def test_get_move_selects_next_corner_cell_when_first_corner_taken(self):
         player = BlockingPlayer("some name")
-
         board_mock = MagicMock()
         board_mock.size = 3
         board_mock.__str__.return_value = "X..\n.O.\n..."
