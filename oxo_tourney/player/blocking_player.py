@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List
 
 from oxo_tourney.board import Board
 from oxo_tourney.player.player import Player
