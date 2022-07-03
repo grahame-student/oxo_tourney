@@ -11,7 +11,7 @@ class BlockingPlayer(Player):
     def __init__(self, name):
         super().__init__(name)
         self.__grid: List[str] = []
-        self.__symbol: Union[str, None] = None
+        self.__symbol: str = "!"
 
     def get_move(self, board: Board, symbol: str) -> List[int]:
         # Player goal - Make the board unwinnable for the opposition
