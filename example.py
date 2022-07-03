@@ -1,14 +1,12 @@
 from oxo_tourney import constants
-from oxo_tourney.player import BlockingPlayer
+from oxo_tourney.player import BlockingPlayer, RestfulPlayer
 from oxo_tourney.tourney import Tourney
 
 
 def main():
     player_list = [
         BlockingPlayer("Player 1"),
-        BlockingPlayer("Player 2"),
-        BlockingPlayer("Player 3"),
-        BlockingPlayer("Player 4"),
+        RestfulPlayer("Player 2"),
     ]
 
     # player_list = [

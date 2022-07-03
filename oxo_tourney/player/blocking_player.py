@@ -10,7 +10,7 @@ class BlockingPlayer(Player):
 
     def __init__(self, name):
         super().__init__(name)
-        self.__grid: Union[List[str], None] = None
+        self.__grid: List[str] = []
         self.__symbol: Union[str, None] = None
 
     def get_move(self, board: Board, symbol: str) -> List[int]:
