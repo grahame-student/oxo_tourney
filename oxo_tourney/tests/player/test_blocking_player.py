@@ -40,3 +40,12 @@ class TestExamplePlayer(TestCase):
 
         move = player.get_move(board_mock, "X")
         assert_that(move, equal_to([0, 0]))
+
+    def test_get_move_selects_next_corner_cell_when_first_corner_taken(self):
+        player = BlockingPlayer("some name")
+
+        board_mock = MagicMock()
+        board_mock.size = 3
+        board_mock.__str__.return_value = "X..\n.O.\n..."
+        move = player.get_move(board_mock, "O")
+        assert_that(move, equal_to([2, 0]))
