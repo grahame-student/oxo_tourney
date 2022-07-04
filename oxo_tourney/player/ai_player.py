@@ -1,5 +1,6 @@
-from oxo_tourney.player.player import Player
 from typing import List
+
+from oxo_tourney.player.player import Player
 
 
 class AiPlayer(Player):
@@ -7,7 +8,7 @@ class AiPlayer(Player):
         super().__init__(name)
         self.__ai_symbol = ""
         self.__opponent_symbol = ""
-        self.__board_state: List[int] = []
+        self.__board_state: List[str] = []
         self.__board_size = 0
 
     def get_move(self, board, ai_symbol: str):
