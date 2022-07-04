@@ -6,7 +6,7 @@ from oxo_tourney.tourney import Tourney
 def main():
     player_list = [
         BlockingPlayer("Player 1"),
-        RestfulPlayer("Player 2"),
+        BlockingPlayer("Player 2"),
     ]
 
     # player_list = [
