@@ -25,7 +25,7 @@ class Tourney:
     def __play_game(self, play_self, player1, player2):
         game_result = [None, None]
         if not play_self and player1 != player2:
-            game = Game(player1, player2, 3)
+            game = Game(player1, player2, 15)
             game_result = game.start()
             self.__update_score_matrix(game_result, player1, player2)
         return game_result
