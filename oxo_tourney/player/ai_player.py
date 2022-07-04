@@ -1,12 +1,13 @@
 from oxo_tourney.player.player import Player
+from typing import List
 
 
 class AiPlayer(Player):
     def __init__(self, name: str):
         super().__init__(name)
-        self.__ai_symbol = ''
-        self.__opponent_symbol = ''
-        self.__board_state = []
+        self.__ai_symbol = ""
+        self.__opponent_symbol = ""
+        self.__board_state: List[int] = []
         self.__board_size = 0
 
     def get_move(self, board, ai_symbol: str):
@@ -21,17 +22,17 @@ class AiPlayer(Player):
 
         for row in range(0, self.__board_size):
             for col in range(0, self.__board_size):
-                if self.__board_state[row][col] == '.':
+                if self.__board_state[row][col] == ".":
                     self.__board_state[row] = self.__get_row_val(ai_symbol, row, col)
                     score = self.__minimax(board_state, False)
-                    self.__board_state[row] = self.__get_row_val('.', row, col)
+                    self.__board_state[row] = self.__get_row_val(".", row, col)
                     if score > best_score:
                         best_score = score
                         best_move = [col, row]
         return best_move
 
     # returns optimal move using minimax algorithm
-    def __minimax(self, board_state,  is_maximizing):
+    def __minimax(self, board_state, is_maximizing):
         if self.__is_ai_player_wins():
             return 1
         if self.__is_opponent_player_wins():
@@ -43,10 +44,12 @@ class AiPlayer(Player):
             best_score = -1000
             for row in range(0, self.__board_size):
                 for col in range(0, self.__board_size):
-                    if board_state[row][col] == '.':
-                        board_state[row] = self.__get_row_val(self.__ai_symbol, row, col)
+                    if board_state[row][col] == ".":
+                        board_state[row] = self.__get_row_val(
+                            self.__ai_symbol, row, col
+                        )
                         score = self.__minimax(board_state, False)
-                        board_state[row] = self.__get_row_val('.', row, col)
+                        board_state[row] = self.__get_row_val(".", row, col)
                         if score > best_score:
                             best_score = score
             return best_score
@@ -54,17 +57,19 @@ class AiPlayer(Player):
             best_score = 1000
             for row in range(0, self.__board_size):
                 for col in range(0, self.__board_size):
-                    if board_state[row][col] == '.':
-                        board_state[row] = self.__get_row_val(self.__opponent_symbol, row, col)
+                    if board_state[row][col] == ".":
+                        board_state[row] = self.__get_row_val(
+                            self.__opponent_symbol, row, col
+                        )
                         score = self.__minimax(board_state, True)
-                        board_state[row] = self.__get_row_val('.', row, col)
+                        board_state[row] = self.__get_row_val(".", row, col)
                         if score < best_score:
                             best_score = score
             return best_score
 
     def __get_row_val(self, symbol, row, col):
         row_val = self.__board_state[row]
-        row_val = row_val[:col] + symbol + row_val[col + 1:]
+        row_val = row_val[:col] + symbol + row_val[col + 1 :]
         return row_val
 
     def __is_ai_player_wins(self):
