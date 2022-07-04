@@ -1,6 +1,6 @@
 from .example_player import ExamplePlayer
 from .human_player import HumanPlayer
-from .kati_player import KatiPlayer
+from .kati_player import Quirinis_Gemini
 from .random_player import RandomPlayer
 from .restful_player import RestfulPlayer
 
@@ -9,5 +9,5 @@ __all__ = [
     "HumanPlayer",
     "RandomPlayer",
     "RestfulPlayer",
-    "KatiPlayer",
+    "Quirinis_Gemini",
 ]

@@ -6,7 +6,7 @@ PLAYER_1 = "O"
 PLAYER_2 = "X"
 
 
-class KatiPlayer(Player):
+class Quirinis_Gemini(Player):
     def __init__(self, name):
         super().__init__(name)
 

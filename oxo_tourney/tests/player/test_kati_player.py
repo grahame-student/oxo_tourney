@@ -2,17 +2,17 @@ from unittest import TestCase
 from unittest.mock import MagicMock
 
 from hamcrest import assert_that, equal_to, is_not, less_than
-from oxo_tourney.player import KatiPlayer
+from oxo_tourney.player import Quirinis_Gemini
 
 
-class TestKatiPlayer(TestCase):
+class TestQuirinisGemini(TestCase):
     def test_name_returns_value_passed_into_constructor(self):
-        player = KatiPlayer("some name")
+        player = Quirinis_Gemini("some name")
 
         assert_that(player.name, equal_to("some name"))
 
     def test_next_move_returns_col_less_than_board_size(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = MagicMock()
         board_mock.size = 3
         max_col = 0
@@ -23,7 +23,7 @@ class TestKatiPlayer(TestCase):
         assert_that(max_col, less_than(3))
 
     def test_next_move_returns_row_less_than_board_size(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = MagicMock()
         board_mock.size = 2
         max_row = 0
@@ -34,67 +34,67 @@ class TestKatiPlayer(TestCase):
         assert_that(max_row, less_than(2))
 
     def test_check_rows_returns_win(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = ["X", "X", ".", "."]
         result = player.check_rows(board_mock, "X", 2)
         assert_that(result, equal_to(1))
 
     def test_check_rows_returns_fail(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = ["X", "O", ".", "."]
         result = player.check_rows(board_mock, "X", 2)
         assert_that(result, equal_to(0))
 
     def test_check_columns_returns_win(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = ["X", ".", "X", "."]
         result = player.check_columns(board_mock, "X", 2)
         assert_that(result, equal_to(2))
 
     def test_check_columns_returns_fail(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = ["X", "O", ".", "."]
         result = player.check_columns(board_mock, "X", 2)
         assert_that(result, equal_to(0))
 
     def test_check_diagonal_forward_returns_win(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = ["X", ".", "O", ".", "X", ".", "O", "O", "X"]
         result = player.check_diagonals(board_mock, "X", 3)
         assert_that(result, equal_to(3))
 
     def test_check_diagonal_backwards_returns_win(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = ["X", ".", "O", ".", "O", ".", "O", "O", "."]
         result = player.check_diagonals(board_mock, "O", 3)
         assert_that(result, equal_to(4))
 
     def test_check_diagonal_returns_fail(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board_mock = ["X", ".", "O", ".", "X", ".", "O", "O", "."]
         result = player.check_diagonals(board_mock, "O", 3)
         assert_that(result, equal_to(0))
 
     def test_other_symbol_returns_O(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         symbol = "X"
         result = player.get_other_symbol(symbol)
         assert_that(result, equal_to("O"))
 
     def test_other_symbol_returns_X(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         symbol = "O"
         result = player.get_other_symbol(symbol)
         assert_that(result, equal_to("X"))
 
     def test_other_symbol_returns_blank(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         symbol = "A"
         result = player.get_other_symbol(symbol)
         assert_that(result, equal_to("."))
 
     def test_get_position_returns_win_space(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board = ["."] * 9
         board[0] = "X"
         board[1] = "X"
@@ -102,7 +102,7 @@ class TestKatiPlayer(TestCase):
         assert_that(result, equal_to(2))
 
     def test_get_position_returns_block_space(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board = ["."] * 9
         board[0] = "O"
         board[1] = "O"
@@ -110,7 +110,7 @@ class TestKatiPlayer(TestCase):
         assert_that(result, equal_to(2))
 
     def test_get_position_returns_middle_space(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board = ["."] * 25
         board[0] = "X"
         board[4] = "X"
@@ -120,7 +120,7 @@ class TestKatiPlayer(TestCase):
         assert_that(result, equal_to(12))
 
     def test_get_position_returns_random_space(self):
-        player = KatiPlayer("")
+        player = Quirinis_Gemini("")
         board = ["."] * 25
         board[0] = "X"
         board[4] = "X"
