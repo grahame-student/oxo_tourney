@@ -1,14 +1,14 @@
 from oxo_tourney import constants
-from oxo_tourney.player import Quirinis_Gemini, RandomPlayer, RestfulPlayer
+from oxo_tourney.player import BraveBraveSirRobinPlayer, RandomPlayer, RestfulPlayer
 from oxo_tourney.tourney import Tourney
 
 
 def main():
     player_list = [
-        RandomPlayer("Player 1"),
-        RandomPlayer("Player 2"),
-        RestfulPlayer("Player 3"),
-        Quirinis_Gemini("Player 4"),
+        BraveBraveSirRobinPlayer("Player 1"),
+        BraveBraveSirRobinPlayer("Player 2"),
+        BraveBraveSirRobinPlayer("Player 3"),
+        BraveBraveSirRobinPlayer("Player 4"),
     ]
     tourney = Tourney(player_list)
     tourney.start()
