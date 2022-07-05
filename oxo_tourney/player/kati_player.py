@@ -1,10 +1,12 @@
 import random
 
-from oxo_tourney.constants import *
 from oxo_tourney.player.player import Player
 
+PLAYER_1 = "O"
+PLAYER_2 = "X"
 
-class BraveBraveSirRobinPlayer(Player):
+
+class Quirinis_Gemini(Player):
     def __init__(self, name):
         super().__init__(name)
 
@@ -18,11 +20,13 @@ class BraveBraveSirRobinPlayer(Player):
         return other_symbol
 
     @staticmethod
-    def check_rows_for_line(board, symbol, size):
+    def check_rows(board, symbol, size):
         return_value = 0
         count = 0
+        # rows
         for var in range(size):
             for ret in range(size):
+                # print("r", ret + (size * var), board[ret + (size * var)])
                 if board[ret + (size * var)] == symbol:
                     count += 1
                 else:
@@ -32,11 +36,13 @@ class BraveBraveSirRobinPlayer(Player):
         return return_value
 
     @staticmethod
-    def check_columns_for_line(board, symbol, size):
+    def check_columns(board, symbol, size):
         count = 0
         return_value = 0
+        # columns
         for var in range(size):
             for ret in range(size):
+                # print("c", var + (size * ret), board[var + (size * ret)])
                 if board[var + (size * ret)] == symbol:
                     count += 1
                 else:
@@ -46,11 +52,12 @@ class BraveBraveSirRobinPlayer(Player):
         return return_value
 
     @staticmethod
-    def check_diagonals_for_line(board, symbol, size):
+    def check_diagonals(board, symbol, size):
         count = 0
         return_value = 0
-        # forwards
+        # diagonal forward
         for var in range(size):
+            # print("df", (size + 1) * var,board[((size + 1) * var)])
             if board[((size + 1) * var)] == symbol:
                 count += 1
             else:
@@ -59,8 +66,9 @@ class BraveBraveSirRobinPlayer(Player):
                 return_value = 3
 
         count = 0
-        # backwards
+        # diagonal backward
         for var in range(size):
+            # print("db", (size - 1) * (var + 1), board[(size - 1) * (var + 1)])
             if board[(size - 1) * (var + 1)] == symbol:
                 count += 1
             else:
@@ -70,20 +78,18 @@ class BraveBraveSirRobinPlayer(Player):
 
         return return_value
 
-    @staticmethod
-    def check_win_board(board, symbol, size):
+    def check_win_board(self, board, symbol, size):
         return_value: int = 0
-        return_value += BraveBraveSirRobinPlayer.check_rows_for_line(board, symbol, size)
-        return_value += BraveBraveSirRobinPlayer.check_columns_for_line(board, symbol, size)
-        return_value += BraveBraveSirRobinPlayer.check_diagonals_for_line(board, symbol, size)
+        return_value += self.check_rows(board, symbol, size)
+        return_value += self.check_columns(board, symbol, size)
+        return_value += self.check_diagonals(board, symbol, size)
         return return_value
 
-    @staticmethod
-    def check_win_move(spaces, board, size, symbol):
+    def check_win_move(self, spaces, board, size, symbol):
         for var in spaces:
             board_copy = board
             board_copy[var] = symbol
-            temp = BraveBraveSirRobinPlayer.check_win_board(board_copy, symbol, size)
+            temp = self.check_win_board(board_copy, symbol, size)
             board_copy[var] = "."
             if temp != 0:
                 ret = var
@@ -103,13 +109,13 @@ class BraveBraveSirRobinPlayer(Player):
                 board_state.append(".")
 
         # check if any move will win
-        ret = BraveBraveSirRobinPlayer.check_win_move(available_spaces, board_state, size, symbol)
+        ret = self.check_win_move(available_spaces, board_state, size, symbol)
         if ret != 0xFF:
             return ret
 
         # block a win
         other_symbol = self.get_other_symbol(symbol)
-        ret = BraveBraveSirRobinPlayer.check_win_move(available_spaces, board_state, size, other_symbol)
+        ret = self.check_win_move(available_spaces, board_state, size, other_symbol)
         if ret != 0xFF:
             return ret
 
@@ -123,10 +129,6 @@ class BraveBraveSirRobinPlayer(Player):
         middle = int((size * size) / 2)
         if middle in available_spaces:
             return middle
-
-        # todo Check if diagonal/row/col has only their symbol - if yes, go there
-
-        # todo Check if diagonal/row/col has only my symbol - if yes, go there
 
         return random.choice(available_spaces)
 
@@ -148,5 +150,5 @@ class BraveBraveSirRobinPlayer(Player):
 
         element = self.get_position(board_state, symbol, size)
 
-        move = BraveBraveSirRobinPlayer.convert_position_to_row_and_col(element, size)
+        move = self.convert_position_to_row_and_col(element, size)
         return [move[0], move[1]]
