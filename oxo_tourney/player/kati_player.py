@@ -1,12 +1,10 @@
 import random
 
+from oxo_tourney.constants import *
 from oxo_tourney.player.player import Player
 
-PLAYER_1 = "O"
-PLAYER_2 = "X"
 
-
-class Quirinis_Gemini(Player):
+class BraveBraveSirRobinPlayer(Player):
     def __init__(self, name):
         super().__init__(name)
 
@@ -23,10 +21,8 @@ class Quirinis_Gemini(Player):
     def check_rows(board, symbol, size):
         return_value = 0
         count = 0
-        # rows
         for var in range(size):
             for ret in range(size):
-                # print("r", ret + (size * var), board[ret + (size * var)])
                 if board[ret + (size * var)] == symbol:
                     count += 1
                 else:
@@ -39,10 +35,8 @@ class Quirinis_Gemini(Player):
     def check_columns(board, symbol, size):
         count = 0
         return_value = 0
-        # columns
         for var in range(size):
             for ret in range(size):
-                # print("c", var + (size * ret), board[var + (size * ret)])
                 if board[var + (size * ret)] == symbol:
                     count += 1
                 else:
@@ -57,7 +51,6 @@ class Quirinis_Gemini(Player):
         return_value = 0
         # diagonal forward
         for var in range(size):
-            # print("df", (size + 1) * var,board[((size + 1) * var)])
             if board[((size + 1) * var)] == symbol:
                 count += 1
             else:
@@ -68,7 +61,6 @@ class Quirinis_Gemini(Player):
         count = 0
         # diagonal backward
         for var in range(size):
-            # print("db", (size - 1) * (var + 1), board[(size - 1) * (var + 1)])
             if board[(size - 1) * (var + 1)] == symbol:
                 count += 1
             else:
@@ -78,18 +70,20 @@ class Quirinis_Gemini(Player):
 
         return return_value
 
-    def check_win_board(self, board, symbol, size):
+    @staticmethod
+    def check_win_board(board, symbol, size):
         return_value: int = 0
-        return_value += self.check_rows(board, symbol, size)
-        return_value += self.check_columns(board, symbol, size)
-        return_value += self.check_diagonals(board, symbol, size)
+        return_value += BraveBraveSirRobinPlayer.check_rows(board, symbol, size)
+        return_value += BraveBraveSirRobinPlayer.check_columns(board, symbol, size)
+        return_value += BraveBraveSirRobinPlayer.check_diagonals(board, symbol, size)
         return return_value
 
-    def check_win_move(self, spaces, board, size, symbol):
+    @staticmethod
+    def check_win_move(spaces, board, size, symbol):
         for var in spaces:
             board_copy = board
             board_copy[var] = symbol
-            temp = self.check_win_board(board_copy, symbol, size)
+            temp = BraveBraveSirRobinPlayer.check_win_board(board_copy, symbol, size)
             board_copy[var] = "."
             if temp != 0:
                 ret = var
