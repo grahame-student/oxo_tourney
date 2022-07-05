@@ -32,19 +32,6 @@ class BraveBraveSirRobinPlayer(Player):
         return return_value
 
     @staticmethod
-    def check_rows_for_contents(board, symbol, size):
-        count = [] * size
-        for var in range(size):
-            for ret in range(size):
-                if board[ret + (size * var)] == symbol:
-                    count[var] += 1
-                elif board[ret + (size * var)] != ".":
-                    count = 0
-        for var in range(size):
-            if count[var] == max(count):
-                return count[var]
-
-    @staticmethod
     def check_columns_for_line(board, symbol, size):
         count = 0
         return_value = 0
@@ -57,19 +44,6 @@ class BraveBraveSirRobinPlayer(Player):
                 if count == size:
                     return_value = 2
         return return_value
-
-    @staticmethod
-    def check_col_for_contents(board, symbol, size):
-        count = [0] * size
-        for var in range(size):
-            for ret in range(size):
-                if board[var + (size * ret)] == symbol:
-                    count[var] += 1
-                elif board[var + (size * ret)] != ".":
-                    count = 0
-        for var in range(size):
-            if count[var] == max(count):
-                return count[var]
 
     @staticmethod
     def check_diagonals_for_line(board, symbol, size):
@@ -97,34 +71,6 @@ class BraveBraveSirRobinPlayer(Player):
         return return_value
 
     @staticmethod
-    def check_diagonal_forward_for_contents(board, symbol, size):
-        count = 0
-        return_value = 0
-        # forwards
-        for var in range(size):
-            if board[((size + 1) * var)] == symbol:
-                count += 1
-            elif board[((size + 1) * var)] != ".":
-                count = 0
-        if count != 0:
-            return_value = 5
-        return return_value
-
-    @staticmethod
-    def check_diagonal_backwards_for_contents(board, symbol, size):
-        count = 0
-        return_value = 0
-        # backwards
-        for var in range(size):
-            if board[(size - 1) * (var + 1)] == symbol:
-                count += 1
-            elif board[(size - 1) * (var + 1)] == symbol:
-                count = 0
-        if count != 0:
-            return_value = 6
-        return return_value
-
-    @staticmethod
     def check_win_board(board, symbol, size):
         return_value: int = 0
         return_value += BraveBraveSirRobinPlayer.check_rows_for_line(board, symbol, size)
@@ -142,21 +88,6 @@ class BraveBraveSirRobinPlayer(Player):
             if temp != 0:
                 ret = var
                 return ret
-        return 0xFF
-
-    @staticmethod
-    def check_next_best_move(spaces, board, size, symbol):
-        # todo fix this - spaces isn't the correct thing to check,
-        #  need ot check the elements in the diagonal/row/col not the available spaces
-        for var in spaces:
-            if BraveBraveSirRobinPlayer.check_diagonal_forward_for_contents(board, symbol, size) != 0:
-                return var
-            elif BraveBraveSirRobinPlayer.check_diagonal_backwards_for_contents(board, symbol, size) != 0:
-                return var
-            # elif BraveBraveSirRobinPlayer.check_rows_for_contents(board, symbol, size) != 0:
-            #     return var
-            # elif BraveBraveSirRobinPlayer.check_col_for_contents(board, symbol, size) != 0:
-            #     return var
         return 0xFF
 
     def get_position(self, board, symbol, size):
@@ -193,17 +124,10 @@ class BraveBraveSirRobinPlayer(Player):
         if middle in available_spaces:
             return middle
 
-        # Check if diagonal/row/col has only their symbol - if yes, go there
-        print("kw1")
-        ret = BraveBraveSirRobinPlayer.check_next_best_move(available_spaces, board_state, size, other_symbol)
-        if ret != 0xFF:
-            return ret
-        print("kw2")
-        # Check if diagonal/row/col has only my symbol - if yes, go there
-        ret = BraveBraveSirRobinPlayer.check_next_best_move(available_spaces, board_state, size, symbol)
-        if ret != 0xFF:
-            return ret
-        print("kw3")
+        # todo Check if diagonal/row/col has only their symbol - if yes, go there
+
+        # todo Check if diagonal/row/col has only my symbol - if yes, go there
+
         return random.choice(available_spaces)
 
     @staticmethod
