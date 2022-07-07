@@ -90,6 +90,80 @@ class BraveBraveSirRobinPlayer(Player):
                 return ret
         return 0xFF
 
+    @staticmethod
+    def find_better_move_diagonal_forward(board, size, symbol):
+        count = 0
+        return_spaces = []
+        # diagonal
+        for var in range(size):
+            if board[((size + 1) * var)] == symbol:
+                count += 1
+            elif board[((size + 1) * var)] != ".":
+                count = 0
+                break
+            else:
+                list.append(return_spaces, ((size + 1) * var))
+        if count != 0 and len(return_spaces) != 0:
+            return random.choice(return_spaces)
+        else:
+            return 0xFF
+
+    @staticmethod
+    def find_better_move_diagonal_backwards(board, size, symbol):
+        count = 0
+        return_spaces = []
+        # diagonal
+        for var in range(size):
+            if board[(size - 1) * (var + 1)] == symbol:
+                count += 1
+            elif board[(size - 1) * (var + 1)] != ".":
+                count = 0
+                break
+            else:
+                list.append(return_spaces, (size - 1) * (var + 1))
+        if count != 0 and len(return_spaces) != 0:
+            return random.choice(return_spaces)
+        else:
+            return 0xFF
+
+    @staticmethod
+    def find_better_move_rows(board, size, symbol):
+        count = 0
+        return_spaces = []
+        # row
+        for var in range(size):
+            return_spaces = []
+            for ret in reversed(range(size)):
+                if board[ret + (size * var)] == symbol:
+                    count += 1
+                elif board[ret + (size * var)] != ".":
+                    count = 0
+                    break
+                else:
+                    list.append(return_spaces, ret + (size * var))
+            if count != 0 and len(return_spaces) != 0:
+                return random.choice(return_spaces)
+        return 0xFF
+
+    @staticmethod
+    def find_better_move_columns(board, size, symbol):
+        count = 0
+        return_spaces = []
+        # row
+        for var in reversed(range(size)):
+            return_spaces = []
+            for ret in range(size):
+                if board[var + (size * ret)] == symbol:
+                    count += 1
+                elif board[var + (size * ret)] != ".":
+                    count = 0
+                    break
+                else:
+                    list.append(return_spaces, var + (size * ret))
+            if count != 0 and len(return_spaces) != 0:
+                return random.choice(return_spaces)
+        return 0xFF
+
     def get_position(self, board, symbol, size):
         available_spaces = []
         board_state = []
@@ -101,7 +175,6 @@ class BraveBraveSirRobinPlayer(Player):
             else:
                 available_spaces.append(var)
                 board_state.append(".")
-
         # check if any move will win
         ret = self.check_win_move(available_spaces, board_state, size, symbol)
         if ret != 0xFF:
@@ -123,6 +196,32 @@ class BraveBraveSirRobinPlayer(Player):
         middle = int((size * size) / 2)
         if middle in available_spaces:
             return middle
+
+        # todo make into a separate function
+        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_backwards(board_state, size, other_symbol)
+        if ret != 0xFF:
+            return ret
+        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_forward(board_state, size, other_symbol)
+        if ret != 0xFF:
+            return ret
+        ret = BraveBraveSirRobinPlayer.find_better_move_columns(board_state, size, other_symbol)
+        if ret != 0xFF:
+            return ret
+        ret = BraveBraveSirRobinPlayer.find_better_move_rows(board_state, size, other_symbol)
+        if ret != 0xFF:
+            return ret
+        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_backwards(board_state, size, symbol)
+        if ret != 0xFF:
+            return ret
+        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_forward(board_state, size, symbol)
+        if ret != 0xFF:
+            return ret
+        ret = BraveBraveSirRobinPlayer.find_better_move_columns(board_state, size, symbol)
+        if ret != 0xFF:
+            return ret
+        ret = BraveBraveSirRobinPlayer.find_better_move_rows(board_state, size, symbol)
+        if ret != 0xFF:
+            return ret
 
         return random.choice(available_spaces)
 
