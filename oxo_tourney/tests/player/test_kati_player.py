@@ -126,7 +126,7 @@ class TestBraveBraveSirRobin(TestCase):
         result = player.get_position(board, PLAYER_1, 5)
         assert_that(result, any_of(0, 4, 20, 24))
 
-    def test_find_better_move_diagonal_backwards_returns_space(self):
+    def test_find_better_move_diagonal_backwards_returns_block(self):
         player = BraveBraveSirRobinPlayer("")
         board = ["."] * 25
         board[0] = PLAYER_1
@@ -137,7 +137,7 @@ class TestBraveBraveSirRobin(TestCase):
         result = player.get_position(board, PLAYER_1, 5)
         assert_that(result, any_of(8, 16))
 
-    def test_find_better_move_diagonal_forwards_returns_space(self):
+    def test_find_better_move_diagonal_forwards_returns_block(self):
         player = BraveBraveSirRobinPlayer("")
         board = ["."] * 25
         board[0] = PLAYER_1
@@ -152,14 +152,22 @@ class TestBraveBraveSirRobin(TestCase):
         player = BraveBraveSirRobinPlayer("")
         board = ["."] * 25
         board[0] = PLAYER_1
+        board[1] = PLAYER_1
+        board[3] = PLAYER_1
         board[4] = PLAYER_2
+        board[6] = PLAYER_2
+        board[7] = PLAYER_1
+        board[8] = PLAYER_2
+        board[10] = PLAYER_2
         board[12] = PLAYER_1
+        board[15] = PLAYER_1
+        board[16] = PLAYER_2
         board[20] = PLAYER_2
-        board[24] = PLAYER_2
+        board[24] = PLAYER_1
         result = player.get_position(board, PLAYER_1, 5)
-        assert_that(result, any_of(9, 14, 19))
+        assert_that(result, any_of(2, 17, 22))
 
-    def test_find_better_move_rows_returns_space(self):
+    def test_find_better_move_rows_returns_block(self):
         player = BraveBraveSirRobinPlayer("")
         board = ["."] * 25
         board[0] = PLAYER_1
@@ -189,26 +197,8 @@ class TestBraveBraveSirRobin(TestCase):
         result = player.get_position(board, PLAYER_1, 5)
         assert_that(result, any_of(3, 8, 23))
 
-    def test_find_better_move_columns_returns_space(self):
-        player = BraveBraveSirRobinPlayer("")
-        board = ["."] * 25
-        board[0] = PLAYER_1
-        board[4] = PLAYER_2
-        board[5] = PLAYER_1
-        board[6] = PLAYER_2
-        board[12] = PLAYER_1
-        board[13] = PLAYER_2
-        board[16] = PLAYER_1
-        board[18] = PLAYER_2
-        board[19] = PLAYER_1
-        board[20] = PLAYER_2
-        board[22] = PLAYER_1
-        board[23] = PLAYER_1
-        board[24] = PLAYER_1
-        result = player.get_position(board, PLAYER_1, 5)
-        assert_that(result, any_of(2, 7, 17))
 
-    def test_find_better_move_columns_returns_space(self):
+    def test_get_position_returns_random_space(self):
         player = BraveBraveSirRobinPlayer("")
         board = ["."] * 25
         board[0] = PLAYER_1
@@ -226,3 +216,47 @@ class TestBraveBraveSirRobin(TestCase):
         board[24] = PLAYER_1
         result = player.get_position(board, PLAYER_1, 5)
         assert_that(result, any_of(1, 2, 3, 7, 8, 9, 10, 11, 14, 15, 17, 21))
+
+    def test_find_better_move_diagonal_forwards_returns_space(self):
+        player = BraveBraveSirRobinPlayer("")
+        board = ["."] * 25
+        board[0] = PLAYER_1
+        board[4] = PLAYER_2
+        board[12] = PLAYER_1
+        board[20] = PLAYER_2
+        board[24] = PLAYER_1
+        result = player.get_position(board, PLAYER_1, 5)
+        assert_that(result, any_of(6, 18))
+
+    def test_find_better_move_diagonal_backwards_returns_space(self):
+        player = BraveBraveSirRobinPlayer("")
+        board = ["."] * 25
+        board[0] = PLAYER_1
+        board[4] = PLAYER_2
+        board[12] = PLAYER_2
+        board[20] = PLAYER_2
+        board[24] = PLAYER_1
+        result = player.get_position(board, PLAYER_2, 5)
+        assert_that(result, any_of(8, 16))
+
+    def test_find_better_move_rows_returns_space(self):
+        player = BraveBraveSirRobinPlayer("")
+        board = ["."] * 25
+        board[0] = PLAYER_1
+        board[4] = PLAYER_1
+        board[6] = PLAYER_2
+        board[7] = PLAYER_1
+        board[8] = PLAYER_2
+        board[9] = PLAYER_2
+        board[10] = PLAYER_2
+        board[11] = PLAYER_1
+        board[12] = PLAYER_2
+        board[13] = PLAYER_1
+        board[15] = PLAYER_1
+        board[16] = PLAYER_2
+        board[17] = PLAYER_2
+        board[20] = PLAYER_2
+        board[24] = PLAYER_1
+        result = player.get_position(board, PLAYER_1, 5)
+        assert_that(result, any_of(1, 2, 3))
+
