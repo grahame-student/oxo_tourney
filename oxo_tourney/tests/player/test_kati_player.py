@@ -2,7 +2,7 @@ from unittest import TestCase
 from unittest.mock import MagicMock
 
 from hamcrest import any_of, assert_that, equal_to, less_than
-from oxo_tourney.constants import *
+from oxo_tourney.constants import PLAYER_1, PLAYER_2
 from oxo_tourney.player import BraveBraveSirRobinPlayer
 
 

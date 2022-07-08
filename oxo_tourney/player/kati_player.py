@@ -1,6 +1,6 @@
 import random
 
-from oxo_tourney.constants import *
+from oxo_tourney.constants import PLAYER_1, PLAYER_2
 from oxo_tourney.player.player import Player
 
 
@@ -183,9 +183,7 @@ class BraveBraveSirRobinPlayer(Player):
         )
         if ret != 0xFF:
             return ret
-        ret = BraveBraveSirRobinPlayer.find_better_move_rows(
-            board_state, size, symbol
-        )
+        ret = BraveBraveSirRobinPlayer.find_better_move_rows(board_state, size, symbol)
         if ret != 0xFF:
             return ret
         return 0xFF
