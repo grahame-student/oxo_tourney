@@ -1,9 +1,9 @@
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from hamcrest import any_of, assert_that, equal_to, is_not, less_than
-from oxo_tourney.player import BraveBraveSirRobinPlayer
+from hamcrest import any_of, assert_that, equal_to, less_than
 from oxo_tourney.constants import *
+from oxo_tourney.player import BraveBraveSirRobinPlayer
 
 
 class TestBraveBraveSirRobin(TestCase):
@@ -60,19 +60,26 @@ class TestBraveBraveSirRobin(TestCase):
 
     def test_check_diagonal_forward_returns_win(self):
         player = BraveBraveSirRobinPlayer("")
-        board_mock = [PLAYER_2, ".", PLAYER_1, ".", PLAYER_2, ".", PLAYER_1, PLAYER_1, PLAYER_2]
+        board_mock = [
+            PLAYER_2, ".", PLAYER_1,
+            ".", PLAYER_2, ".",
+            PLAYER_1, PLAYER_1, PLAYER_2]
         result = player.check_diagonals(board_mock, PLAYER_2, 3)
         assert_that(result, equal_to(3))
 
     def test_check_diagonal_backwards_returns_win(self):
         player = BraveBraveSirRobinPlayer("")
-        board_mock = [PLAYER_2, ".", PLAYER_1, ".", PLAYER_1, ".", PLAYER_1, PLAYER_1, "."]
+        board_mock = [PLAYER_2, ".", PLAYER_1,
+                      ".", PLAYER_1, ".",
+                      PLAYER_1, PLAYER_1, "."]
         result = player.check_diagonals(board_mock, PLAYER_1, 3)
         assert_that(result, equal_to(4))
 
     def test_check_diagonal_returns_fail(self):
         player = BraveBraveSirRobinPlayer("")
-        board_mock = [PLAYER_2, ".", PLAYER_1, ".", PLAYER_2, ".", PLAYER_1, PLAYER_1, "."]
+        board_mock = [PLAYER_2, ".", PLAYER_1,
+                      ".", PLAYER_2, ".",
+                      PLAYER_1, PLAYER_1, "."]
         result = player.check_diagonals(board_mock, PLAYER_1, 3)
         assert_that(result, equal_to(0))
 
@@ -197,7 +204,6 @@ class TestBraveBraveSirRobin(TestCase):
         result = player.get_position(board, PLAYER_1, 5)
         assert_that(result, any_of(3, 8, 23))
 
-
     def test_get_position_returns_random_space(self):
         player = BraveBraveSirRobinPlayer("")
         board = ["."] * 25
@@ -259,4 +265,3 @@ class TestBraveBraveSirRobin(TestCase):
         board[24] = PLAYER_1
         result = player.get_position(board, PLAYER_1, 5)
         assert_that(result, any_of(1, 2, 3))
-

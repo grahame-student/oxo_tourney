@@ -168,16 +168,24 @@ class BraveBraveSirRobinPlayer(Player):
     @staticmethod
     def find_better_move(board_state, size, symbol):
         ret = 0xFF
-        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_backwards(board_state, size, symbol)
+        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_backwards(
+            board_state, size, symbol
+        )
         if ret != 0xFF:
             return ret
-        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_forward(board_state, size, symbol)
+        ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_forward(
+            board_state, size, symbol
+        )
         if ret != 0xFF:
             return ret
-        ret = BraveBraveSirRobinPlayer.find_better_move_columns(board_state, size, symbol)
+        ret = BraveBraveSirRobinPlayer.find_better_move_columns(
+            board_state, size, symbol
+        )
         if ret != 0xFF:
             return ret
-        ret = BraveBraveSirRobinPlayer.find_better_move_rows(board_state, size, symbol)
+        ret = BraveBraveSirRobinPlayer.find_better_move_rows(
+            board_state, size, symbol
+        )
         if ret != 0xFF:
             return ret
         return 0xFF
