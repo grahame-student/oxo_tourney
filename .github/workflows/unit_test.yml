@@ -25,10 +25,7 @@ jobs:
       
       - name: Run tests with pytest
         run: |
-          pytest --cov=./ --cov-report=xml --cov-fail-under 100
-
-<<<<<<< HEAD
-=======
+          pytest --cov=./ --cov-branch --cov-report=xml:pytest-cobertura.xml --cov-fail-under 100
       - name: ReportGenerator
         if: always()
         uses: danielpalme/ReportGenerator-GitHub-Action@5.1.9
@@ -43,7 +40,6 @@ jobs:
           name: index.html 
           path: .
             
->>>>>>> a0884eb4d98c4309e9823b45d213973b2a9b21ec
       - name: Upload Coverage to Codecov
         if: always()
         uses: codecov/codecov-action@v3
