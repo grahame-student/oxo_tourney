@@ -1,15 +1,17 @@
 from oxo_tourney import constants
-from oxo_tourney.player import AiPlayer, BlockingPlayer, BraveBraveSirRobinPlayer, RandomPlayer, RestfulPlayer
+from oxo_tourney.player import AiPlayer, BlockingPlayer, BraveBraveSirRobinPlayer, HAL9000, RandomPlayer, RestfulPlayer, RobertPlayer
 from oxo_tourney.tourney import Tourney
 
 
 def main():
     player_list = [
         AiPlayer("AiPlayer"),
-        BraveBraveSirRobinPlayer("Robin"),
         BlockingPlayer("Blocking"),
-        RestfulPlayer("Restful"),
+        BraveBraveSirRobinPlayer("Robin"),
+        HAL9000("HAL9000"),
         RandomPlayer("Random"),
+        RestfulPlayer("Restful"),
+        RobertPlayer("Robert"),
     ]
     
     tourney = Tourney(player_list)
