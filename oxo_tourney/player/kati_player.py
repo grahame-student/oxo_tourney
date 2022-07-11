@@ -129,7 +129,6 @@ class BraveBraveSirRobinPlayer(Player):
     @staticmethod
     def find_better_move_rows(board, size, symbol):
         count = 0
-        return_spaces = []
         # row
         for var in range(size):
             return_spaces = []
@@ -149,7 +148,6 @@ class BraveBraveSirRobinPlayer(Player):
     @staticmethod
     def find_better_move_columns(board, size, symbol):
         count = 0
-        return_spaces = []
         # row
         for var in reversed(range(size)):
             return_spaces = []
@@ -167,7 +165,6 @@ class BraveBraveSirRobinPlayer(Player):
 
     @staticmethod
     def find_better_move(board_state, size, symbol):
-        ret = 0xFF
         ret = BraveBraveSirRobinPlayer.find_better_move_diagonal_backwards(
             board_state, size, symbol
         )
