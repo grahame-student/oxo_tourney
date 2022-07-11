@@ -5,6 +5,7 @@ from .human_player import HumanPlayer
 from .kati_player import BraveBraveSirRobinPlayer
 from .random_player import RandomPlayer
 from .restful_player import RestfulPlayer
+from .robert_player import RobertPlayer
 
 __all__ = [
     "AiPlayer",
@@ -14,4 +15,5 @@ __all__ = [
     "HumanPlayer",
     "RandomPlayer",
     "RestfulPlayer",
+    "RobertPlayer"
 ]
