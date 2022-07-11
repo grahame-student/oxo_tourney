@@ -5,12 +5,10 @@ from oxo_tourney.tourney import Tourney
 
 def main():
     player_list = [
-        AiPlayer("AiPlayer"),
         BlockingPlayer("Blocking"),
         BraveBraveSirRobinPlayer("Robin"),
         HAL9000("HAL9000"),
         RandomPlayer("Random"),
-        RestfulPlayer("Restful"),
         RobertPlayer("Robert"),
     ]
     
