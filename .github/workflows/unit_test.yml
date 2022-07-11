@@ -25,7 +25,11 @@ jobs:
       
       - name: Run tests with pytest
         run: |
-          pytest --cov=./ --cov-branch --cov-report=xml:pytest-cobertura.xml --cov-fail-under 100
+          pytest --cov=./ \
+                 --cov-branch \
+                 --cov-report=xml:pytest-cobertura.xml \
+                 --cov-fail-under 100
+
       - name: ReportGenerator
         if: always()
         uses: danielpalme/ReportGenerator-GitHub-Action@5.1.9
