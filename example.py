@@ -9,7 +9,7 @@ def main():
         BraveBraveSirRobinPlayer("Robin"),
         HAL9000("HAL9000"),
         RandomPlayer("Random"),
-        RobertPlayer("Robert"),
+#        RobertPlayer("Robert"),
     ]
     
     tourney = Tourney(player_list)
