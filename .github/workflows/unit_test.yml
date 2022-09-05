@@ -32,7 +32,7 @@ jobs:
 
       - name: ReportGenerator
         if: always()
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.9
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.10
         with:
           reports: pytest-cobertura.xml
           targetdir: .
