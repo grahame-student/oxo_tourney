@@ -1,5 +1,5 @@
 pytest==7.1.2
-pytest-cov==3.0.0
+pytest-cov==4.0.0
 pyhamcrest==2.0.3
 mock==4.0.3
 requests==2.28.1
